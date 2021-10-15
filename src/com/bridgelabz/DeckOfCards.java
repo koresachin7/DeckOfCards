@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Purpose  - We have to Initialize the size of Deck of cards
+ * Purpose  - We have method we have to shuffle the cards
  * @author  - Sachin Kore
  * @version - 16.0
  */
@@ -78,6 +78,23 @@ public class DeckOfCards {
         System.out.println("\nSequence of cards are below : ");
         for (int i = 1; i <= player; i++) {
             System.out.println("\nPlayer " + i + " Getting card.............");
+            toshuffle(cardsDeck);
         }
+    }
+    /*
+    Created a method to shuffle the cards
+    Shuffling the cards by using Math.random and storing it in temp variable of ArrayList
+    Again we are assigning temp to cardDecck
+     */
+    public static void toshuffle(ArrayList<String> cardsDeck) {
+        System.out.println("shuffling the cards before Distribution");
+        ArrayList<String> temp = new ArrayList<String>();
+        while (!cardsDeck.isEmpty()) {
+            int loc = (int) (Math.random() * cardsDeck.size());
+            temp.add(cardsDeck.get(loc));
+            cardsDeck.remove(loc);
+        }
+        cardsDeck = temp;
+        toDisplay(cardsDeck);
     }
 }
