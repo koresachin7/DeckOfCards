@@ -2,49 +2,36 @@ package com.bridgelabz;
 
 import java.util.ArrayList;
 
-class Cards{
-    private final String suit;
-    private final String rank;
-
-    public Cards(String suit, String rank) {
-        this.suit = suit;
-        this.rank = rank;
-    }
-
-    public String toString() {
-        return "Cards{" +
-                "suit='" + suit + '\'' +
-                ", rank='" + rank + '\'' +
-                '}';
-    }
-
-}
+/**
+ * Purpose  - We have to Initialize the size of Deck of cards
+ * @author  - Sachin Kore
+ * @version - 16.0
+ */
 
 public class DeckOfCards {
-    // using Arraylist to store unique cards
-    ArrayList<Cards> cards = new ArrayList<>(52);
+    public ArrayList<String> cardsDeck = new ArrayList<>();
 
-    // using array to hold suits of cards
-    private static final String[] suit = {"Clubs", "Diamonds", "Hearts", "Spade"};
-
-    //using array to hold ranks of cards
-    private static final String[] rank = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King","Ace"};
-
-    /**
-     * Purpose: Method to set up the deck with unique cards.
-     *  Here nested foreach loop is used to generate 52 unique cards.
-     */
-    private void setupDeck(){
-        for (String s : suit) {
-            for (String value : rank) {
-                this.cards.add(new Cards(s, value));
+    public void welcome(){
+        System.out.println("Welcome to the gaming world of Deck of Cards");
+    }
+    public void deckOfCards(){
+        String[] suits = {"Clubs", "Diamonds", "Hearts", "Spades"};
+        String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "King", "Queen", "Ace"};
+        int numOfCards = suits.length * ranks.length;
+        System.out.println("\nNumber of cards in the deck:" + numOfCards);
+        for (int i = 0; i < ranks.length; i++) {
+            for (int j = 0; j < suits.length; j++) {
+                cardsDeck.add(ranks[i] + "--->" + suits[j]);
             }
         }
+        toDisplay(cardsDeck);
     }
-    public static void main(String[] args) {
-        System.out.println("Welcome To The Deck Of Cards Game");
-        // creating instance reference of DeckOfCards class
-        DeckOfCards deckOfCards = new DeckOfCards();
-        deckOfCards.setupDeck();
+
+    public static void toDisplay(ArrayList<String> cardsDeck) {
+        System.out.println("\nCards in Deck:");
+        for (String element : cardsDeck) {
+            System.out.println(element);
+        }
+        System.out.println();
     }
 }
